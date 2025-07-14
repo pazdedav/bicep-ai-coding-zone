@@ -1,0 +1,14 @@
+{
+    "github.copilot.chat.codeGeneration.useInstructionFiles": true,
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "ms-azuretools.vscode-bicep",
+    "github.copilot.chat.pullRequestDescriptionGeneration.instructions": [
+        {
+            "file": "pr.instructions.md" // import instructions from file `pr.instructions.md`
+        }
+    ],
+    "chat.promptFiles": true,
+    "chat.agent.enabled": true,
+    "chat.mcp.enabled": true,
+    "chat.extensionTools.enabled": true
+}
