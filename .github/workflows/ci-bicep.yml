@@ -1,0 +1,38 @@
+name: Bicep CI Workflow
+
+on:
+  push:
+    branches:
+      - 'feature/**'
+    paths:
+    - "infrastructure/**"
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+
+jobs:
+  continuous-integration:
+    uses: pazdedav/pazdedav/.github/workflows/platform.template.bicep-ci.yml@master
+    with:
+      parametersFilePath: 'infrastructure/main.bicepparam'
+      bicepTemplatePath: 'infrastructure/main.bicep'
+      deploymentScope: 'subscription'
+      managementGroupId: ''
+      resourceGroupName: ''
+      deploymentLocation: 'norwayeast'
+      preflightValidation: 'enabled'
+      securityScanning: 'enabled'
+      psRuleScanning: 'enabled'
+    secrets:
+      AZURE_TENANT_ID: ${{ secrets.AZ_TENANT_ID }}
+      AZURE_CLIENT_ID: ${{ secrets.AZ_CLIENT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZ_SUBSCRIPTION_ID }}
+
+
+

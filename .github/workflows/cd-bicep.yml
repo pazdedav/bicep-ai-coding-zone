@@ -1,0 +1,33 @@
+name: CD
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'infrastructure/**'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+
+concurrency: MyWorkflow
+
+jobs:
+  continuous-deployment:
+    uses: pazdedav/pazdedav/.github/workflows/platform.template.bicep-cd.yml@master
+    with:
+      parametersFilePath: 'infrastructure/main.bicepparam'
+      bicepTemplatePath: 'infrastructure/main.bicep'
+      deploymentScope: 'subscription'
+      deploymentLocation: 'norwayeast'
+      managementGroupId: ''
+      resourceGroupName: ''
+      useEnvironment: 'true' # If set to 'true', you need to have a GitHub environment called 'prod' in place.
+
+    secrets:
+      AZURE_TENANT_ID: ${{ secrets.AZ_TENANT_ID }}
+      AZURE_CLIENT_ID: ${{ secrets.AZ_CLIENT_ID }}
+      AZURE_SUBSCRIPTION_ID: ${{ secrets.AZ_SUBSCRIPTION_ID }}
