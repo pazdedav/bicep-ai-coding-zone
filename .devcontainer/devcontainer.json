@@ -34,7 +34,8 @@
                 },
                 "terminal.integrated.profiles.osx": {
                     "pwsh": {
-                        "path": "/usr/local/bin/pwsh"
+                        "path": "/usr/bin/env",
+                        "args": ["pwsh"]
                     },
                     "zsh": {
                         "path": "/bin/zsh"
