@@ -9,6 +9,6 @@
         "ms-azuretools.vscode-azureresourcegroups",
         "ms-vscode.azurecli",
         "github.vscode-github-actions",
-        "pspester.pester-test",
+        "pspester.pester-test"
     ]
 }
