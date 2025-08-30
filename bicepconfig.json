@@ -1,0 +1,90 @@
+{
+    // See https://aka.ms/bicep/config for more information on Bicep configuration options
+    // Press CTRL+SPACE/CMD+SPACE at any location to see Intellisense suggestions
+    "analyzers": {
+        "core": {
+            "enabled": true,
+            "verbose": false,
+            "rules": {
+                "adminusername-should-not-be-literal": {
+                    "level": "error"
+                },
+                "max-outputs": {
+                    "level": "error"
+                },
+                "max-params": {
+                    "level": "error"
+                },
+                "max-resources": {
+                    "level": "error"
+                },
+                "max-variables": {
+                    "level": "error"
+                },
+                "no-hardcoded-env-urls": {
+                    "level": "error"
+                },
+                "no-unnecessary-dependson": {
+                    "level": "error"
+                },
+                "no-unused-params": {
+                    "level": "error"
+                },
+                "no-unused-vars": {
+                    "level": "error"
+                },
+                "no-unused-existing-resources": {
+                    "level": "warning"
+                },
+                "no-unused-imports": {
+                    "level": "warning"
+                },
+                "no-hardcoded-location": {
+                    "level": "warning"
+                },
+                "outputs-should-not-contain-secrets": {
+                    "level": "error"
+                },
+                "prefer-interpolation": {
+                    "level": "error"
+                },
+                "secure-parameter-default": {
+                    "level": "error"
+                },
+                "simplify-interpolation": {
+                    "level": "error"
+                },
+                "protect-commandtoexecute-secrets": {
+                    "level": "error"
+                },
+                "use-stable-vm-image": {
+                    "level": "error"
+                },
+                "use-resource-symbol-reference": {
+                    "level": "error"
+                },
+                "use-recent-api-versions": {
+                    "level": "warning"
+                },
+                "use-recent-module-versions": {
+                    "level": "warning",
+                    "message": "The module version is outdated. Please consider updating to the latest version."
+                }
+            }
+        }
+    },
+    "moduleAliases": {
+        "ts": {},
+        "br": {
+            // Placeholder for aliases to Private Modules Registry
+        }
+    },
+    "cloud": {
+        "currentProfile": "AzureCloud",
+        "credentialPrecedence": [
+            "AzureCLI",
+            "AzurePowerShell"
+        ]
+    },
+    "experimentalFeaturesEnabled": {}
+}
