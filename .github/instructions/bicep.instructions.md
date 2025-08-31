@@ -48,19 +48,6 @@ Coding standards, domain knowledge, and preferences that AI should follow.
 ### Documentation
 -   Include helpful // comments within your Bicep files to improve readability
 
-### Cegal Verified Modules
--   Use Cegal verified modules from the Bicep registry when available to ensure best practices
-- Example usage of a Cegal verified module:
-
-    ```bicep
-    module modSymbolicName 'br/CPMRegistry:managed-storage:v1.0.0' = {
-        name: 'storageAccount'
-        params: {
-            name: parName
-            location: parLocation
-        }
-    }
-    ```
 
 ### Azure Verified Modules
 -   Use Azure verified modules from the Bicep registry when available to ensure best practices and security compliance
