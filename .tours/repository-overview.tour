@@ -1,0 +1,105 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "Repository Overview: Bicep AI Coding Zone",
+  "description": "A quick guided tour of the repository: infrastructure layout, CI/CD, devcontainer, linting, PSRule checks, and Copilot instruction files.",
+  "isPrimary": true,
+  "ref": "main",
+  "steps": [
+    {
+      "title": "Welcome",
+      "file": "README.md",
+      "pattern": "# Bicep project template",
+      "description": "Welcome! This repo is a template for Azure IaC using Bicep. The README outlines features (Bicep dev env, CI/CD, devcontainer), prerequisites, and how to deploy using Azure CLI/PowerShell."
+    },
+    {
+      "title": "Dev Container",
+      "file": ".devcontainer/devcontainer.json",
+      "pattern": "\"features\": {",
+      "description": "The development container provides a consistent toolchain: Azure CLI (with Bicep), PowerShell modules (Az, Pester, PSRule), and GitHub CLI. VS Code settings enable Bicep formatting and Copilot Chat integrations."
+    },
+    {
+      "title": "Recommended Extensions",
+      "file": ".vscode/extensions.json",
+      "pattern": "\"recommendations\": [",
+      "description": "Recommended VS Code extensions: Bicep, PowerShell, Azure CLI, GitHub Actions, Copilot, and Pester. Ensure the CodeTour extension is installed to view this tour."
+    },
+    {
+      "title": "Bicep Config & Linting",
+      "file": "bicepconfig.json",
+      "pattern": "\"analyzers\": {",
+      "description": "Bicep analyzers enforce best practices: no hardcoded secrets/locations, prefer interpolation, use stable API versions, and more. Severities are tuned to catch issues early in CI and locally."
+    },
+    {
+      "title": "PSRule for Azure",
+      "file": "ps-rule.yaml",
+      "pattern": "PSRule Configurations",
+      "description": "PSRule validates Azure templates and parameter files against best practices. It's configured to expand Bicep/params, check Bicep CLI version, and include PSRule.Rules.Azure."
+    },
+    {
+      "title": "Run PSRule Locally",
+      "file": ".vscode/tasks.json",
+      "pattern": "\"label\": \"PSRule: Run analysis\"",
+      "description": "Run the task ‘PSRule: Run analysis’ (Terminal → Run Task…) to lint your Bicep/params using PSRule.Rules.Azure. Findings show up in the Problems panel."
+    },
+    {
+      "title": "Main Bicep Template",
+      "file": "infrastructure/main.bicep",
+      "pattern": "targetScope = 'subscription'",
+      "description": "The main template deploys at subscription scope and currently provisions a resource group. Parameters include resourceGroupname, location, and tags. Extend this file with your Azure resources."
+    },
+    {
+      "title": "Default Parameters",
+      "file": "infrastructure/main.bicepparam",
+      "pattern": "using './main.bicep'",
+      "description": "Default parameter values for quick testing (RG name, location, tags). Add environment-specific parameter files (e.g., main.dev.bicepparam) for dev/test/prod."
+    },
+    {
+      "title": "CI Workflow",
+      "file": ".github/workflows/ci-bicep.yml",
+      "pattern": "name: Bicep CI Workflow",
+      "description": "CI validates Bicep on PRs/feature branches: template validation, linting, optional what-if, PSRule, and security scanning via a reusable workflow."
+    },
+    {
+      "title": "CD Workflow",
+      "file": ".github/workflows/cd-bicep.yml",
+      "pattern": "name: CD",
+      "description": "CD deploys changes to Azure when ‘infrastructure/**’ changes land on main. It targets subscription scope and supports GitHub Environments."
+    },
+    {
+      "title": "Test Azure Access",
+      "file": ".github/workflows/test-access-azure.yml",
+      "pattern": "name: Test access to Azure",
+      "description": "Utility workflow to verify GitHub-to-Azure authentication (workload identity). Use this to sanity-check secrets and federated credentials."
+    },
+    {
+      "title": "Authentication Setup",
+      "file": "README.md",
+      "pattern": "## 🔐 Authentication Setup",
+      "description": "Configure repository secrets: AZ_TENANT_ID, AZ_SUBSCRIPTION_ID, AZ_CLIENT_ID. The workflows use OIDC/workload identity to auth to Azure without storing creds."
+    },
+    {
+      "title": "Copilot Instructions (Bicep)",
+      "file": ".github/instructions/bicep.instructions.md",
+      "pattern": "## Bicep Specific Instructions",
+      "description": "Guidance for AI/code generation: naming, structure, parameters, security, and using verified modules (Cegal/AVM). Great for keeping generated code consistent."
+    },
+    {
+      "title": "PR Title Guidance",
+      "file": ".github/instructions/pr.instructions.md",
+      "pattern": "Use conventional commits",
+      "description": "Follow conventional commits for PR titles (e.g., feat:, fix:, chore:). Copilot Chat uses this file when helping draft PR descriptions."
+    },
+    {
+      "title": "Copilot Project Overview",
+      "file": ".github/copilot-instructions.md",
+      "pattern": "## Project Overview",
+      "description": "High-level overview for Copilot: repo structure, developer workflows, best practices, and integration points (Bicep, PSRule, Pester, CI/CD)."
+    },
+    {
+      "title": "Next Steps",
+      "file": "README.md",
+      "pattern": "## 🚀 Getting Started",
+      "description": "Customize ‘infrastructure/main.bicep’, add env-specific parameter files, and commit a branch. Open a PR to trigger CI. Merge to main to deploy via CD."
+    }
+  ]
+}
