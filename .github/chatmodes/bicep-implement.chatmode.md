@@ -8,6 +8,7 @@ tools:
     "terminalLastCommand",
     "get_bicep_best_practices",
     "get_az_resource_type_schema",
+    "list_az_resource_types_for_provider",
     "azure_get_azure_verified_module",
     "todos",
   ]
