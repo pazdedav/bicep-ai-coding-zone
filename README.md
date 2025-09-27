@@ -9,6 +9,13 @@ Template repository for Infrastructure as Code (IaC) deployments to Azure using 
 - DevContainer support for consistent development experience
 - Sample Bicep templates and parameters
 - Workload identity integration for secure authentication
+- GitHub Copilot support, tailored for Bicep
+  - [Bicep instructions](https://github.com/pazdedav/bicep-ai-coding-zone/blob/main/.github/instructions/bicep.instructions.md)
+  - [Custom chat modes](https://github.com/pazdedav/bicep-ai-coding-zone/tree/main/.github/chatmodes) - plan and implement
+  - Support for [Bicep MCP Server](https://github.com/Azure/bicep/blob/main/docs/experimental/mcp-tools.md)
+ 
+> [!NOTE]
+> Credit to [John Lokerse](https://github.com/johnlokerse) for crafting the chatmodes [here](https://github.com/johnlokerse/azure-bicep-custom-chat-modes).
 
 ## 📋 Prerequisites
 
