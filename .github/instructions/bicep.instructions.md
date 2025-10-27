@@ -23,6 +23,12 @@ Coding standards, domain knowledge, and preferences that AI should follow.
 -   Set default values that are safe for test environments (use low-cost pricing tiers)
 -   Use @allowed decorator sparingly to avoid blocking valid deployments
 -   Use parameters for settings that change between deployments
+-   Required parameters should not have a default value, nor have a nullable definition at the type. param parName string? is wrong!
+-   Parameters that are optional are not defined with a default value. Instead, a ? is added to the datatype. For example, if you have a parameter that is optional, you can define it like this:
+```bicep
+@description('Optional parameter')
+param optionalParameter string?
+```
 
 ### Variables
 -   Variables automatically infer type from the resolved value
@@ -49,8 +55,70 @@ Coding standards, domain knowledge, and preferences that AI should follow.
 -   If a parameter name includes ‘password,’ ‘admin,’ or ‘key,’ apply the @secure decorator to ensure secure handling. For example, use `@secure` with parameters like adminPassword or apiKey.
 -   Use resource properties directly in outputs (e.g., storageAccount.properties.primaryEndpoints)
 
+## Built-in functions
+
+If this error arises:
+`Environment URLs should not be hardcoded. Use the environment() function to ensure compatibility across clouds. Found this disallowed host: "core.windows.net" bicep core linterno-hardcoded-env-urls`
+
+Use the built-in function `environment()` to retrieve the current environment. #fetch https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/bicep-functions-deployment#environment
+
 ### Documentation
 -   Include helpful // comments within your Bicep files to improve readability
+
+## User-defined types
+
+Prefer strong typing over loosely typed arrays/objects.
+
+```bicep
+// arrays of primitives
+param allowedSubnets string[]
+
+// typed object
+type Person = {
+  name: string
+  age: int
+}
+param owner Person
+```
+
+## Template structure
+
+```bicep
+////////////
+// Imports (optional)
+////////////
+
+metadata name = '{name}'
+metadata description = '{<= 100 chars: purpose of this template}'
+
+////////////
+// targetScope (optional)
+////////////
+
+////////////
+// Parameters
+////////////
+
+////////////
+// Variables
+////////////
+
+////////////
+// Resources / Modules / Azure Verified Modules
+////////////
+
+////////////
+// Outputs
+////////////
+
+////////////
+// User-Defined Types
+////////////
+
+////////////
+// User-Defined Functions (optional)
+////////////
+```
 
 ### Azure Verified Modules
 -   Use Azure verified modules from the Bicep registry when available to ensure best practices and security compliance
@@ -71,3 +139,20 @@ Coding standards, domain knowledge, and preferences that AI should follow.
   - Azure Monitor: br/public:avm/res/insights:_version_
   - Networking: br/public:avm/res/network:_version_
   - Storage: br/public:avm/res/storage:_version_
+
+## Do not do this
+
+Do not make every parameter optional and coalesce these in the variable:
+
+```bicep
+var effectiveLocation = location ?? 'westeurope'
+var effectiveSkuName = skuName ?? 'Standard_LRS'
+var effectiveKind = kind ?? 'StorageV2'
+var effectiveAllowBlobPublicAccess = allowBlobPublicAccess ?? false
+var effectiveSupportsHttpsTrafficOnly = supportsHttpsTrafficOnly ?? true
+var effectivePublicNetworkAccess = publicNetworkAccess ?? 'Disabled'
+var effectiveNetworkAcls = networkAcls ?? {
+  bypass: 'AzureServices'
+  defaultAction: 'Deny'
+}
+```
