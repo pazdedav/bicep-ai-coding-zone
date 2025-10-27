@@ -41,6 +41,9 @@ Coding standards, domain knowledge, and preferences that AI should follow.
 -   Avoid excessive nesting of child resources
 -   Use parent property or nesting instead of constructing resource names for child resources
 
+### Module References
+-   Avoid generating name attribute when declaring modules (used as a nested deployment name), Bicep CLI will auto-generate it.
+
 ### Security
 -   Never include secrets or keys in outputs
 -   If a parameter name includes ‘password,’ ‘admin,’ or ‘key,’ apply the @secure decorator to ensure secure handling. For example, use `@secure` with parameters like adminPassword or apiKey.
@@ -51,14 +54,20 @@ Coding standards, domain knowledge, and preferences that AI should follow.
 
 ### Azure Verified Modules
 -   Use Azure verified modules from the Bicep registry when available to ensure best practices and security compliance
+-   Prefer using the latest versions AVM modules, published in the Bicep Registry (MCR)
 -   Azure Verified Modules always have the name and location as required parameters. Always pass the name and location as parameters to the module:
 
     ```bicep
     module modSymbolicName 'br/public:avm/res/_type_/_resource_:_version_' = {
-    name: 'storageAccount'
     params: {
-        name: parName
-        location: parLocation
+        name: Name
+        location: Location
     }
     }
     ```
+- Example references to AVM modules:
+  - Compute: br/public:avm/res/compute:_version_
+  - Desktop Virtualization: br/public:avm/res/desktop-virtualization:_version_
+  - Azure Monitor: br/public:avm/res/insights:_version_
+  - Networking: br/public:avm/res/network:_version_
+  - Storage: br/public:avm/res/storage:_version_
