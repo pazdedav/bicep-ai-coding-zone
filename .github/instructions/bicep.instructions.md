@@ -13,7 +13,7 @@ Coding standards, domain knowledge, and preferences that AI should follow.
 ### Structure and Declaration
 -   Always declare parameters at the top of files with @description decorators
 -   Use latest stable API versions for all resources
--   Use descriptive @description decorators for all parameters
+-   Always add a description decorator `@description` on parameters and outputs to describe the purpose. If the parameter is required, start the description with `Required.` and when the parameter is optional or nullable start with `Optional.`.
 -   Specify minimum and maximum character length for naming parameters
 -   Begin Bicep files with metadata including name, description. For example:
     `metadata name = 'exampleName'`
@@ -43,11 +43,11 @@ Coding standards, domain knowledge, and preferences that AI should follow.
 
 ### Security
 -   Never include secrets or keys in outputs
+-   If a parameter name includes ‘password,’ ‘admin,’ or ‘key,’ apply the @secure decorator to ensure secure handling. For example, use `@secure` with parameters like adminPassword or apiKey.
 -   Use resource properties directly in outputs (e.g., storageAccount.properties.primaryEndpoints)
 
 ### Documentation
 -   Include helpful // comments within your Bicep files to improve readability
-
 
 ### Azure Verified Modules
 -   Use Azure verified modules from the Bicep registry when available to ensure best practices and security compliance
