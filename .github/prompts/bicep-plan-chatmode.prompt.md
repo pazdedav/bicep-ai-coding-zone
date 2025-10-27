@@ -1,5 +1,5 @@
 ---
-mode: bicep-plan
+agent: bicep-plan
 ---
 I am tasked with the implementation of a storage account including private networking using a private endpoint (using blob groupId). The virtual network used is an existing virtual network named vnet-01 and subnet snet-pe-01. The virtual network is present in the resource group rg-networking.
 

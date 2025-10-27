@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 ---
 @Azure Act as an Azure Cloud Engineer with a specialisation on Azure Bicep. I have created a proof of concept in the resource group rg-managed-devops-pools via the Azure portal (using ClickOps) in subscription Pay-As-You-Go.
 

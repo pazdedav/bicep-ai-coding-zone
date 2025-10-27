@@ -9,9 +9,10 @@
     ],
     "chat.promptFiles": true,
     "chat.agent.enabled": true,
-    "chat.mcp.enabled": true,
     "chat.extensionTools.enabled": true,
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
-    }
+    },
+    "chat.mcp.access": "all",
+    "chat.todolistTool.enabled": true
 }

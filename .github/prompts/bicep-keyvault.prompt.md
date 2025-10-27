@@ -1,5 +1,5 @@
 ---
-mode: agent
+agent: agent
 ---
 @Azure Act as an Azure Cloud Engineer with a specialisation on Azure Bicep. Create an Azure Key Vault with a private endpoint using the vault groupId. Add a parameter to point to an existing virtual network and subnet. Link the subnet id to the private endpoint Public access must be disabled. Also, create the private DNS zone for the key vault. Ignore tags, and do not use access policies for access to the key vault.
 
