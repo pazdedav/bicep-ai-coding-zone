@@ -2,6 +2,13 @@
 
 Template repository for Infrastructure as Code (IaC) deployments to Azure using Bicep DSL (Domain Specific Language). This repository provides a standardized starting point for Azure infrastructure deployments with built-in CI/CD pipelines, development container configuration, and best practices.
 
+> [!NOTE]
+> Special shout-out to Azure MVP [John Lokerse](https://github.com/johnlokerse) and his amazing work.
+> 
+> I have used John's custom chat modes, custom Copilot instructions, and custom prompts for Bicep.
+> 
+> I highly recommend reading his [blog](https://johnlokerse.dev/) and following him on social media.
+
 ## 🎯 Features
 
 - Pre-configured Bicep development environment
