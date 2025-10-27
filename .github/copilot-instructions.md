@@ -21,6 +21,7 @@ This repository provides a scaffold for Azure infrastructure-as-code using Bicep
 - **Testing**: Use Pester (`Invoke-Pester tests/*.Tests.ps1`) for PowerShell-based validation.
 - **Linting**: Bicep linting is configured via `bicepconfig.json` and enforced in CI.
 - **Best Practices**: PSRule is used for Azure-specific policy and best practice checks.
+- **Git Commit Messages**: Use Conventional Commits when suggesting commit messages (in VS Code, on GitHub.com, etc.)
 
 ## Patterns & Conventions
 
